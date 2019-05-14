@@ -1,0 +1,48 @@
+image: node:latest
+
+stages:
+  - test
+  - build
+  
+variables:
+  LUDUM_MATERIAIS_LATEST_IMAGE: $CI_REGISTRY_IMAGE/ludum-materiais
+
+test:
+  image: node
+  stage: test
+  variables:
+    NODE_ENV: test
+  before_script:
+    - npm install
+  script:
+    - npm test
+
+cache:
+  paths:
+  - node_modules/
+
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+    - docker build -f Dockerfile -t $LUDUM_MATERIAIS_LATEST_IMAGE .
+    - docker push $LUDUM_MATERIAIS_LATEST_IMAGE
+  only:
+    - /master/
+
+build-dev:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+    - docker build -f Dockerfile -t $LUDUM_MATERIAIS_LATEST_IMAGE:dev .
+    - docker push $LUDUM_MATERIAIS_LATEST_IMAGE:dev
+  only:
+    - /development/
