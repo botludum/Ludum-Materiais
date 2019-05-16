@@ -1,11 +1,23 @@
 var expect = require('chai').expect;
-var postModel = require('../models/linkTutorialModel');
+var linkModel = require('../models/linkModel');
+var tutorialModel = require('../models/tutorialModel');
 
-describe('post model', function() {
+describe('link model', function() {
   it('data should be null', function(done) {
-    var post = new postModel();
+    var link = new linkModel();
       
-    post.validate(function(err) {
+    link.validate(function(err) {
+        expect(err).to.be.null;;
+        done();
+    });
+  });
+});
+
+describe('tutorial model', function() {
+  it('data should be null', function(done) {
+    var tutorial = new tutorialModel();
+      
+    tutorial.validate(function(err) {
         expect(err).to.be.null;;
         done();
     });
