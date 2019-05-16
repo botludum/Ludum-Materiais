@@ -15,3 +15,16 @@ exports.index = function (req, res) {
         });
     });
 };
+
+exports.new = function (req, res) {
+    var newLink = new link(req.body);
+    console.log(req.body);
+    newLink.save(function (err) {
+        if (err)
+            res.send(err);
+        res.json({
+            message: 'Material adicionado!',
+            data: newLink
+        });
+    });
+};
