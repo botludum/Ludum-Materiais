@@ -46,3 +46,23 @@ exports.approval = function (req, res) {
         res.send('Tag de aprovação inválida!');
     }
 };
+
+exports.pendentes = function (req, res) {
+    find = {
+      "status": null
+    }
+
+    tutorial.find(find, function (err, posts) {
+        if (err) {
+            res.json({
+                status: "error",
+                message: err,
+            });
+        }
+        res.json({
+            status: "success",
+            message: "Tutoriais pendentes recuperados com sucesso!",
+            data: posts
+        });
+    });
+};
