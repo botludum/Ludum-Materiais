@@ -27,3 +27,22 @@ exports.new = function (req, res) {
         });
     });
 };
+
+exports.approval = function (req, res) {
+    if (req.params.aprovacao == 'S' || req.params.aprovacao == 'N') {
+        var mod = {
+            "status":  req.params.aprovacao
+        }
+
+      tutorial.findByIdAndUpdate(req.params.id, mod, {new: true} ,function (err, posts) {
+          if (err)
+              res.send(err);
+          res.json({
+              message: 'Tutorial modificado!',
+              data: posts
+          });
+      });
+    } else {
+        res.send('Tag de aprovação inválida!');
+    }
+};

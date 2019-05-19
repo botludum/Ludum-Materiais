@@ -22,4 +22,7 @@ router.route('/tutoriais')
 router.route('/newtutorial')
 .post(tutorialController.new);
 
+router.route('/tutorial/:id/:aprovacao')
+.put(tutorialController.approval);
+
 module.exports = router;
