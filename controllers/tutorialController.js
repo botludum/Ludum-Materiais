@@ -15,3 +15,15 @@ exports.index = function (req, res) {
         });
     });
 };
+
+exports.new = function (req, res) {
+    var newTutorial = new tutorial(req.body);
+    newTutorial.save(function (err) {
+        if (err)
+            res.send(err);
+        res.json({
+            message: 'Tutorial adicionado!',
+            data: newTutorial
+        });
+    });
+};

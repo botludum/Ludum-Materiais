@@ -19,4 +19,7 @@ router.route('/newlinks')
 router.route('/tutoriais')
 .get(tutorialController.index);
 
+router.route('/newtutorial')
+.post(tutorialController.new);
+
 module.exports = router;
