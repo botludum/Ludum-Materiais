@@ -50,23 +50,27 @@ exports.approval = function (req, res) {
     }
 };
 
-// Retorna os tutoriais que estão pendentes de aprovação
+// Retorna os tutoriais dependendo do seu status
 exports.pendentes = function (req, res) {
-    find = {
-      "status": null
-    }
+  if (req.params.status == 'S' || req.params.status == 'N' || req.params.status == null) {
+      find = {
+          "status": req.params.status
+      }
 
-    tutorial.find(find, function (err, posts) {
-        if (err) {
-            res.json({
+      tutorial.find(find, function (err, posts) {
+          if (err) {
+              res.json({
                 status: "error",
                 message: err,
-            });
-        }
-        res.json({
-            status: "success",
-            message: "Tutoriais pendentes recuperados com sucesso!",
-            data: posts
-        });
-    });
+              });
+          }
+          res.json({
+              status: "success",
+              message: "Tutoriais pendentes recuperados com sucesso!",
+              data: posts
+          });
+      });
+  } else {
+    res.send("Tag de status inválida!");
+  }
 };

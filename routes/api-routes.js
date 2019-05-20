@@ -19,13 +19,16 @@ router.route('/newlinks')
 router.route('/tutoriais')
 .get(tutorialController.index);
 
+router.route('/tutoriaisAprovados/:status')
+.get(tutorialController.pendentes);
+
+router.route('/tutoriaisPendentes')
+.get(tutorialController.pendentes);
+
 router.route('/newtutorial')
 .post(tutorialController.new);
 
 router.route('/tutorial/:id/:aprovacao')
 .put(tutorialController.approval);
-
-router.route('/tutoriaisPendentes')
-.get(tutorialController.pendentes);
 
 module.exports = router;
