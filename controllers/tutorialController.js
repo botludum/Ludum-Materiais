@@ -1,5 +1,6 @@
 var tutorial = require('../models/tutorialModel');
 
+// Recupera todos os tutoriais cadastrados.
 exports.index = function (req, res) {
     tutorial.get(function (err, posts) {
         if (err) {
@@ -16,6 +17,7 @@ exports.index = function (req, res) {
     });
 };
 
+// Adiciona um novo tutorial ao BD.
 exports.new = function (req, res) {
     var newTutorial = new tutorial(req.body);
     newTutorial.save(function (err) {
@@ -28,6 +30,7 @@ exports.new = function (req, res) {
     });
 };
 
+// Aprova ou desaprova um tutorial cadastrado.
 exports.approval = function (req, res) {
     if (req.params.aprovacao == 'S' || req.params.aprovacao == 'N') {
         var mod = {
@@ -47,6 +50,7 @@ exports.approval = function (req, res) {
     }
 };
 
+// Retorna os tutoriais que estão pendentes de aprovação
 exports.pendentes = function (req, res) {
     find = {
       "status": null
