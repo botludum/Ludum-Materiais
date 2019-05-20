@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var tutorialschema = mongoose.Schema({
     title: String,
     description: String,
+    status: String,
     create_date: {
         type: Date,
         default: Date.now
