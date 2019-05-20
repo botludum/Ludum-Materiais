@@ -7,4 +7,12 @@ router.get('/', function (req, res) {
     });
 });
 
+var linkController = require('../controllers/linkController');
+
+router.route('/links')
+.get(linkController.index);
+
+router.route('/newlinks')
+.post(linkController.new);
+
 module.exports = router;
