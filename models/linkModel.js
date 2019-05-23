@@ -4,6 +4,7 @@ var linkSchema = mongoose.Schema({
     title: String,
     type: String,
     link: String,
+    status: Number,
     create_date: {
         type: Date,
         default: Date.now
