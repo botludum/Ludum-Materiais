@@ -51,7 +51,7 @@ exports.approval = function (req, res) {
 };
 
 // Retorna os tutoriais dependendo do seu status
-exports.pendentes = function (req, res) {
+exports.pendencies = function (req, res) {
   if (req.params.status == 'S' || req.params.status == 'N' || req.params.status == null) {
       find = {
           "status": req.params.status

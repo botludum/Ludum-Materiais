@@ -16,14 +16,23 @@ router.route('/links')
 router.route('/links/cadastrar')
 .post(linkController.new);
 
+router.route('/links/:id/:aprovacao')
+.put(linkController.approval);
+
+router.route('/links/aprovados/:status')
+.get(linkController.pendencies);
+
+router.route('/links/pendentes')
+.get(linkController.pendencies);
+
 router.route('/tutoriais')
 .get(tutorialController.index);
 
 router.route('/tutoriais/aprovados/:status')
-.get(tutorialController.pendentes);
+.get(tutorialController.pendencies);
 
 router.route('/tutoriais/pendentes')
-.get(tutorialController.pendentes);
+.get(tutorialController.pendencies);
 
 router.route('/tutoriais/cadastrar')
 .post(tutorialController.new);
