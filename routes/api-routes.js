@@ -20,10 +20,10 @@ router.route('/tutoriais')
 .get(tutorialController.index);
 
 router.route('/tutoriais/aprovados/:status')
-.get(tutorialController.pendentes);
+.get(tutorialController.pendencies);
 
 router.route('/tutoriais/pendentes')
-.get(tutorialController.pendentes);
+.get(tutorialController.pendencies);
 
 router.route('/tutoriais/cadastrar')
 .post(tutorialController.new);
