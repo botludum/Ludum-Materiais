@@ -31,4 +31,7 @@ router.route('/tutoriais/cadastrar')
 router.route('/tutoriais/:id/:aprovacao')
 .put(tutorialController.approval);
 
+router.route('/tutorialEditar/:id')
+.put(tutorialController.edit);
+
 module.exports = router;

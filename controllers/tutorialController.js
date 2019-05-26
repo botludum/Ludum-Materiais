@@ -74,3 +74,16 @@ exports.pendentes = function (req, res) {
     res.send("Tag de status inválida!");
   }
 };
+
+// Edita um tutorial já cadastrado.
+exports.edit = function (req, res) {
+  tutorial.findByIdAndUpdate(req.params.id, req.body, {new: true} ,function (err, posts) {
+      if (err)
+          res.send(err);
+      res.json({
+          message: 'Tutorial modificado!',
+          data: posts
+      });
+  });
+
+};
