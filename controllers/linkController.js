@@ -73,3 +73,16 @@ exports.pendencies = function (req, res) {
     res.send("Tag de status inválida!");
   }
 };
+
+// Edita um link já cadastrado.
+exports.edit = function (req, res) {
+  link.findByIdAndUpdate(req.params.id, req.body, {new: true} ,function (err, posts) {
+      if (err)
+          res.send(err);
+      res.json({
+          message: 'Link modificado!',
+          data: posts
+      });
+  });
+
+};

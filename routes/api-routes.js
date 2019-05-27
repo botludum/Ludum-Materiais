@@ -25,6 +25,9 @@ router.route('/links/aprovados/:status')
 router.route('/links/pendentes')
 .get(linkController.pendencies);
 
+router.route('/linkEditar/:id')
+.put(linkController.edit);
+
 router.route('/tutoriais')
 .get(tutorialController.index);
 
