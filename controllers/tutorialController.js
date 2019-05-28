@@ -51,7 +51,7 @@ exports.approval = function (req, res) {
 };
 
 // Retorna os tutoriais dependendo do seu status
-exports.pendentes = function (req, res) {
+exports.pendencies = function (req, res) {
   if (req.params.status == 'S' || req.params.status == 'N' || req.params.status == null) {
       find = {
           "status": req.params.status
@@ -73,4 +73,17 @@ exports.pendentes = function (req, res) {
   } else {
     res.send("Tag de status inválida!");
   }
+};
+
+// Edita um tutorial já cadastrado.
+exports.edit = function (req, res) {
+  tutorial.findByIdAndUpdate(req.params.id, req.body, {new: true} ,function (err, posts) {
+      if (err)
+          res.send(err);
+      res.json({
+          message: 'Tutorial modificado!',
+          data: posts
+      });
+  });
+
 };

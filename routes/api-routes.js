@@ -13,22 +13,37 @@ var tutorialController = require('../controllers/tutorialController');
 router.route('/links')
 .get(linkController.index);
 
-router.route('/newlinks')
+router.route('/links/cadastrar')
 .post(linkController.new);
+
+router.route('/links/:id/:aprovacao')
+.put(linkController.approval);
+
+router.route('/links/aprovados/:status')
+.get(linkController.pendencies);
+
+router.route('/links/pendentes')
+.get(linkController.pendencies);
+
+router.route('/linkEditar/:id')
+.put(linkController.edit);
 
 router.route('/tutoriais')
 .get(tutorialController.index);
 
-router.route('/tutoriaisAprovados/:status')
-.get(tutorialController.pendentes);
+router.route('/tutoriais/aprovados/:status')
+.get(tutorialController.pendencies);
 
-router.route('/tutoriaisPendentes')
-.get(tutorialController.pendentes);
+router.route('/tutoriais/pendentes')
+.get(tutorialController.pendencies);
 
-router.route('/newtutorial')
+router.route('/tutoriais/cadastrar')
 .post(tutorialController.new);
 
-router.route('/tutorial/:id/:aprovacao')
+router.route('/tutoriais/:id/:aprovacao')
 .put(tutorialController.approval);
+
+router.route('/tutorialEditar/:id')
+.put(tutorialController.edit);
 
 module.exports = router;
