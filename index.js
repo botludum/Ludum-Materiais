@@ -1,6 +1,7 @@
 let express = require('express');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
+import cors from 'cors';
 
 let app = express();
 
@@ -11,6 +12,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+app.use(cors());
 
 // Connect to Mongoose and set connection variable
 mongoose.connect('mongodb://localhost/ludum-materiais');
