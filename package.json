@@ -23,6 +23,7 @@
   "homepage": "https://github.com/botludum/Ludum-Materiais#readme",
   "dependencies": {
     "chai": "^4.2.0",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "mocha": "^6.1.4",
     "mongoose": "^5.5.8",
