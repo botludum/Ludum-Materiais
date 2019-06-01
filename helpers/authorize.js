@@ -13,7 +13,7 @@ function authorize(roles = []) {
 
         (req, res, next) => {
             if (roles.length && !roles.includes(req.user.role)) {
-                return res.status(401).json({ message: 'Não Autorizado' });
+                return res.status(401).json({ message: 'UnauthorizedError' });
             }
 
             next();
