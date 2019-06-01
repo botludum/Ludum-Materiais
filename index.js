@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Connect to Mongoose and set connection variable
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect('mongodb://localhost/ludum-materiais');
 
 var db = mongoose.connection;
 var port = process.env.PORT || 8080;

@@ -9,6 +9,9 @@ router.get('/', function (req, res) {
 
 var linkController = require('../controllers/linkController');
 var tutorialController = require('../controllers/tutorialController');
+var usersController = require('../controllers/usersController');
+const authorize = require('../helpers/authorize');
+const Role = require('../helpers/role');
 
 router.route('/links')
 .get(linkController.index);
@@ -46,4 +49,7 @@ router.route('/tutoriais/:id/:aprovacao')
 router.route('/tutorialEditar/:id')
 .put(tutorialController.edit);
 
+router.route('/authenticate').post(usersController.authenticate);     // public route
+router.get('/', authorize(Role.Admin), usersController.getAll); // admin only
+router.get('/:id', authorize(), usersController.getById);       // all authenticated users
 module.exports = router;

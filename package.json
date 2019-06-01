@@ -25,6 +25,8 @@
     "chai": "^4.2.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "express-jwt": "^5.3.1",
+    "jsonwebtoken": "^8.5.1",
     "mocha": "^6.1.4",
     "mongoose": "^5.5.8",
     "nodemon": "^1.19.0",
