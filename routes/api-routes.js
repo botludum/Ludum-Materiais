@@ -17,7 +17,7 @@ router.route('/links')
 .get(linkController.index);
 
 router.route('/links/cadastrar')
-.post(authorize(Role.Admin), linkController.new);
+.post(authorize(), linkController.new);
 
 router.route('/links/:id/:aprovacao')
 .put(authorize(Role.Admin), linkController.approval);
@@ -41,7 +41,7 @@ router.route('/tutoriais/pendentes')
 .get(authorize(Role.Admin), tutorialController.pendencies);
 
 router.route('/tutoriais/cadastrar')
-.post(authorize(Role.Admin), tutorialController.new);
+.post(authorize(), tutorialController.new);
 
 router.route('/tutoriais/:id/:aprovacao')
 .put(authorize(Role.Admin), tutorialController.approval);
