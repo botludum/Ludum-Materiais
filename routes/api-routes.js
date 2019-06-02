@@ -9,41 +9,47 @@ router.get('/', function (req, res) {
 
 var linkController = require('../controllers/linkController');
 var tutorialController = require('../controllers/tutorialController');
+var usersController = require('../controllers/usersController');
+const authorize = require('../helpers/authorize');
+const Role = require('../helpers/role');
 
 router.route('/links')
 .get(linkController.index);
 
 router.route('/links/cadastrar')
-.post(linkController.new);
+.post(authorize(), linkController.new);
 
 router.route('/links/:id/:aprovacao')
-.put(linkController.approval);
+.put(authorize(Role.Admin), linkController.approval);
 
 router.route('/links/aprovados/:status')
-.get(linkController.pendencies);
+.get(authorize(Role.Admin), linkController.pendencies);
 
 router.route('/links/pendentes')
-.get(linkController.pendencies);
+.get(authorize(Role.Admin), linkController.pendencies);
 
 router.route('/linkEditar/:id')
-.put(linkController.edit);
+.put(authorize(Role.Admin), linkController.edit);
 
 router.route('/tutoriais')
 .get(tutorialController.index);
 
 router.route('/tutoriais/aprovados/:status')
-.get(tutorialController.pendencies);
+.get(authorize(Role.Admin), tutorialController.pendencies);
 
 router.route('/tutoriais/pendentes')
-.get(tutorialController.pendencies);
+.get(authorize(Role.Admin), tutorialController.pendencies);
 
 router.route('/tutoriais/cadastrar')
-.post(tutorialController.new);
+.post(authorize(), tutorialController.new);
 
 router.route('/tutoriais/:id/:aprovacao')
-.put(tutorialController.approval);
+.put(authorize(Role.Admin), tutorialController.approval);
 
 router.route('/tutorialEditar/:id')
-.put(tutorialController.edit);
+.put(authorize(Role.Admin), tutorialController.edit);
 
+router.route('/usuario/auth').post(usersController.authenticate);    
+router.get('/usuario', authorize(Role.Admin), usersController.getAll); 
+router.get('/usuario/:id', authorize(), usersController.getById);       
 module.exports = router;
