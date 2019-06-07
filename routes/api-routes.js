@@ -17,37 +17,37 @@ router.route('/links')
 .get(linkController.index);
 
 router.route('/links/cadastrar')
-.post(authorize(), linkController.new);
+.post(linkController.new);
 
 router.route('/links/:id/:aprovacao')
-.put(authorize(Role.Admin), linkController.approval);
+.put(linkController.approval);
 
 router.route('/links/aprovados/:status')
-.get(authorize(Role.Admin), linkController.pendencies);
+.get(linkController.pendencies);
 
 router.route('/links/pendentes')
-.get(authorize(Role.Admin), linkController.pendencies);
+.get(linkController.pendencies);
 
 router.route('/linkEditar/:id')
-.put(authorize(Role.Admin), linkController.edit);
+.put(linkController.edit);
 
 router.route('/tutoriais')
 .get(tutorialController.index);
 
 router.route('/tutoriais/aprovados/:status')
-.get(authorize(Role.Admin), tutorialController.pendencies);
+.get(tutorialController.pendencies);
 
 router.route('/tutoriais/pendentes')
-.get(authorize(Role.Admin), tutorialController.pendencies);
+.get(tutorialController.pendencies);
 
 router.route('/tutoriais/cadastrar')
-.post(authorize(), tutorialController.new);
+.post(tutorialController.new);
 
 router.route('/tutoriais/:id/:aprovacao')
-.put(authorize(Role.Admin), tutorialController.approval);
+.put(tutorialController.approval);
 
 router.route('/tutorialEditar/:id')
-.put(authorize(Role.Admin), tutorialController.edit);
+.put(tutorialController.edit);
 
 router.route('/usuario/auth').post(usersController.authenticate);    
 router.get('/usuario', authorize(Role.Admin), usersController.getAll); 
