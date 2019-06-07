@@ -3,6 +3,7 @@ image: node:latest
 stages:
   - test
   - build
+  - deploy
   
 variables:
   LUDUM_MATERIAIS_LATEST_IMAGE: $CI_REGISTRY_IMAGE/ludum-materiais
