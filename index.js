@@ -17,7 +17,7 @@ app.use(cors());
 mongoose.connect('mongodb://localhost/ludum-materiais');
 
 var db = mongoose.connection;
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8081;
 
 // Send message for default URL
 app.get('/', (req, res) => res.send('Ludum Materiais'));
