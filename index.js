@@ -1,7 +1,6 @@
 let express = require('express');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
-let cors = require('cors');
 let app = express();
 
 let apiRoutes = require("./routes/api-routes")
@@ -11,7 +10,16 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
-app.use(cors());
+
+var corsMiddleware = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*'); //replace localhost with actual host
+    res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
+
+    next();
+}
+
+app.use(corsMiddleware);
 
 // Connect to Mongoose and set connection variable
 mongoose.connect(process.env.MONGODB_URI);
