@@ -87,3 +87,14 @@ exports.edit = function (req, res) {
   });
 
 };
+
+exports.view = function (req, res) {
+    tutorial.findById(req.params.id, function (err, posts) {
+        if (err)
+            res.send(err);
+        res.json({
+            message: 'Carregando detalhes da dúvida',
+            data: posts
+        });
+    });
+};

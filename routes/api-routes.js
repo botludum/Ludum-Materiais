@@ -19,6 +19,9 @@ router.route('/links')
 router.route('/links/cadastrar')
 .post(linkController.new);
 
+router.route('/links/:id')
+.get(linkController.view);
+
 router.route('/links/:id/:aprovacao')
 .put(linkController.approval);
 
@@ -48,6 +51,9 @@ router.route('/tutoriais/:id/:aprovacao')
 
 router.route('/tutorialEditar/:id')
 .put(tutorialController.edit);
+
+router.route('/tutoriais/:id')
+.get(tutorialController.view);
 
 router.route('/usuario/auth').post(usersController.authenticate);    
 router.get('/usuario', authorize(Role.Admin), usersController.getAll); 
