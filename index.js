@@ -21,7 +21,7 @@ var corsMiddleware = function(req, res, next) {
 
 app.use(corsMiddleware);
 
-mongoose.connect('mongodb://localhost/ludum-materiais');
+mongoose.connect(process.env.MONGODB_URI);
 
 var db = mongoose.connection;
 var port = process.env.PORT || 8081;
