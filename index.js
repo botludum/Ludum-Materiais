@@ -27,22 +27,12 @@ var db = mongoose.connection;
 var port = process.env.PORT || 8081;
 
 db.collection('links').insertMany([
-    // MongoDB adds the _id field with an ObjectId if _id is not present
     { title: "Página oficial da Pygame", type: "Site",link: "https://www.pygame.org/news", status: "S" },
     { title: "Criando um Snake do zero com Pygame em 5 minutos (ou mais)", type: "Vídeo",link: "https://www.youtube.com/watch?v=H4TXHI9BRCQ", status: "S" }
  ])
  .then(function(result) {
-   console.log("OK!", result);
+   console.log("Banco populado!");
  })
-
-db.collection('links').insertMany([
-    // MongoDB adds the _id field with an ObjectId if _id is not present
-    { title: "Página oficial da Pygame", type: "Site",link: "https://www.pygame.org/news", status: "S" },
-    { title: "Criando um Snake do zero com Pygame em 5 minutos (ou mais)", type: "Vídeo",link: "https://www.youtube.com/watch?v=H4TXHI9BRCQ", status: "S" }
-])
- .then(function(result) {
-    console.log("Banco populado!")
-})
  
 app.get('/', (req, res) => res.send('Ludum Materiais'));
 
