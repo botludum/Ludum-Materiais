@@ -48,16 +48,16 @@ build-dev:
   only:
     - /development/
 
-deploy-prod:
-  image: cdrx/rancher-gitlab-deploy
-  stage: deploy
-  script:
-    - "upgrade
-            --rancher-url $RANCHER_URL
-            --rancher-key $RANCHER_ACCESS_KEY
-            --rancher-secret $RANCHER_SECRET_KEY
-            --environment $RANCHER_ENVIRONMENT
-            --stack $RANCHER_STACK
-            --service ludum-materiais"
-  only:
-    - /master/
+# deploy-prod:
+#   image: cdrx/rancher-gitlab-deploy
+#   stage: deploy
+#   script:
+#     - "upgrade
+#             --rancher-url $RANCHER_URL
+#             --rancher-key $RANCHER_ACCESS_KEY
+#             --rancher-secret $RANCHER_SECRET_KEY
+#             --environment $RANCHER_ENVIRONMENT
+#             --stack $RANCHER_STACK
+#             --service ludum-materiais"
+#   only:
+#     - /master/
